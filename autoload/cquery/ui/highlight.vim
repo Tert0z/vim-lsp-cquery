@@ -49,14 +49,31 @@ let s:highlights_mapping =
             \       {
             \           s:Field : 'cqueryMember',
             \           s:Parameter : 'cqueryParameter',
-            \           s:Method : 'cqueryMethod'
+            \           s:Method : 'cqueryMethod',
+            \           s:Variable : 'cqueryGlobalVariable'
+            \       },
+            \       s:Function :
+            \       {
+            \           s:Variable : 'cqueryLocalVariable'
+            \       },
+            \       s:Method :
+            \       {
+            \           s:Variable : 'cqueryLocalVariable'
+            \       },
+            \       s:StaticMethod :
+            \       {
+            \           s:Variable : 'cqueryLocalVariable'
+            \       },
+            \       s:Constructor :
+            \       {
+            \           s:Variable : 'cqueryLocalVariable'
             \       }
             \   },
             \   s:Static :
             \   {
             \       'default':
             \       {
-            \           s:Variable : 'cqueryStaticVariable',
+            \           s:Variable : 'cqueryStaticVariable'
             \       }
             \   }
             \}

@@ -15,5 +15,7 @@ command! LspCqueryCallers call cquery#references#callers()
 
 hi cqueryMember ctermfg=Blue
 hi cqueryMethod ctermfg=Red cterm=bold
-hi cqueryVariable ctermfg=Cyan
+hi cqueryLocalVariable ctermfg=Cyan
+hi cqueryStaticVariable ctermfg=Cyan cterm=italic
+hi cqueryGlobalVariable ctermfg=Cyan cterm=bold
 hi cqueryParameter ctermfg=DarkMagenta
