@@ -54,11 +54,13 @@ let s:highlights_mapping =
             \       },
             \       s:Function :
             \       {
-            \           s:Variable : 'cqueryLocalVariable'
+            \           s:Variable : 'cqueryLocalVariable',
+            \           s:Parameter : 'cqueryParameter'
             \       },
             \       s:Method :
             \       {
-            \           s:Variable : 'cqueryLocalVariable'
+            \           s:Variable : 'cqueryLocalVariable',
+            \           s:Parameter : 'cqueryParameter'
             \       },
             \       s:StaticMethod :
             \       {
@@ -66,14 +68,8 @@ let s:highlights_mapping =
             \       },
             \       s:Constructor :
             \       {
-            \           s:Variable : 'cqueryLocalVariable'
-            \       }
-            \   },
-            \   s:Static :
-            \   {
-            \       'default':
-            \       {
-            \           s:Variable : 'cqueryStaticVariable'
+            \           s:Variable : 'cqueryLocalVariable',
+            \           s:Parameter : 'cqueryParameter'
             \       }
             \   }
             \}
