@@ -50,7 +50,11 @@ let s:highlights_mapping =
             \           s:Field : 'cqueryMember',
             \           s:Parameter : 'cqueryParameter',
             \           s:Method : 'cqueryMethod',
-            \           s:Variable : 'cqueryGlobalVariable'
+            \           s:Variable : 'cqueryGlobalVariable',
+            \           s:Function : 'cqueryFunction',
+            \           s:Class : 'cqueryClass',
+            \           s:Namespace : 'cqueryNamespace',
+            \           s:Struct : 'cqueryStruct'
             \       },
             \       s:Function :
             \       {
@@ -100,11 +104,12 @@ function! s:map_symbol_to_highlight(symbol)
     if has_key(s:highlights_mapping[l:storage_selector][l:parent_selector], a:symbol.kind)
         return s:highlights_mapping[l:storage_selector][l:parent_selector][a:symbol.kind]
     endif
-    return ''
+    return 'cqueryDefault'
 endfunction
 
 function! s:add_highlights(buffer, symbols)
     call s:remove_highlights(a:buffer, 0, -1)
+    let l:buffer_namespace = s:get_buffer_namespace(a:buffer)
     for l:symbol in a:symbols
         let l:highlight = s:map_symbol_to_highlight(l:symbol)
         if len(l:highlight) > 0
@@ -122,11 +127,11 @@ endfunction
 
 function! s:remove_highlights(buffer, line_start, line_end)
     let l:buffer_namespace = s:get_buffer_namespace(a:buffer)
-    call nvim_buf_clear_namespace(a:buffer, l:buffer_namespace, line_start, line_end)
+    call nvim_buf_clear_namespace(a:buffer, l:buffer_namespace, a:line_start, a:line_end)
 endfunction
 
-function! cquery#ui#highlight#remove_highlight_at_line(buffer, line) abort
-    call s:remove_highlights(a:buffer, line, line+1)
+function! cquery#ui#highlight#remove_highlight_at_line(buffer, line)
+    call s:remove_highlights(a:buffer, a:line-1, a:line)
 endfunction
 
 function! cquery#ui#highlight#add_highlights(buffer, symbols) abort

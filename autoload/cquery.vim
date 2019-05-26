@@ -30,5 +30,6 @@ endfunction
 function! cquery#register_highlight() abort
     if s:is_cuquery_supported()
         call lsp#register_notifications("highlight_cquery", function('s:highlight_notify_handler'))
+        autocmd InsertEnter *.h,*.hpp,*.hh,*.c,*.cc,*.cpp call cquery#ui#highlight#remove_highlight_at_line(nvim_get_current_buf(), line('.'))
     endif
 endfunction
