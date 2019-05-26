@@ -12,6 +12,7 @@ command! LspCqueryDerived call cquery#references#derived()
 command! LspCqueryBase call cquery#references#base()
 command! LspCqueryVars call cquery#references#vars()
 command! LspCqueryCallers call cquery#references#callers()
+autocmd InsertEnter call cquery#ui#highlight#remove_highlight_at_line(nvim_get_current_buf(), line('.'))
 
 hi cqueryMember ctermfg=Blue
 hi cqueryMethod ctermfg=Red cterm=bold
